@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: testdep
+  name: testdep
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testdep
+  template:
+    metadata:
+      labels:
+        app: testdep
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
