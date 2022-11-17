@@ -1,0 +1,15 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: testapp
+  namespace: default
+spec:
+  host: testapp.f5demo.io
+  upstreams:
+  - name: tea
+    service: tea-svc
+    port: 80
+  routes:
+  - path: /tea
+    action:
+      pass: tea
