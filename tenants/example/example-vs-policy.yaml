@@ -1,0 +1,13 @@
+apiVersion: k8s.nginx.org/v1
+kind: Policy
+metadata:
+  name: example-vs-policy
+  namespace: f5se
+spec:
+  waf:
+    enable: true
+    apPolicy: "f5se/example-ap-policy"
+    securityLogs:
+    - enable: true
+      apLogConf: "f5se/example-logconf"
+      logDest: "syslog:server=ec2-54-82-92-107.compute-1.amazonaws.com:515"
