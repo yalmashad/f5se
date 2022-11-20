@@ -2,7 +2,7 @@ apiVersion: appprotect.f5.com/v1beta1
 kind: APLogConf
 metadata:
   name: test-logconf
-  namespace: default
+  namespace: f5se
 spec:
   content:
     format: default
