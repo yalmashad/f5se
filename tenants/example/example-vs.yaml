@@ -1,0 +1,18 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: example-vs
+spec:
+  host: example.f5demo.io
+  policies:
+  - name: example-vs-policy
+  externalDNS:
+    enable: true
+  upstreams:
+  - name: demo-app
+    service: demo-svc
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: demo-app
