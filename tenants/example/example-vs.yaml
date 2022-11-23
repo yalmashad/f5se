@@ -4,6 +4,10 @@ metadata:
   name: example-vs
 spec:
   host: example.f5demo.io
+  tls:
+    secret: example-secret
+    cert-manager:
+      cluster-issuer: letsencrypt-issuer
   policies:
   - name: example-vs-policy
   externalDNS:
