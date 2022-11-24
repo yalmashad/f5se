@@ -1,0 +1,20 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: testonly105-vs
+spec:
+  host: testonly105.f5demo.io
+  tls:
+    secret: testonly105-secret
+    cert-manager:
+      cluster-issuer: letsencrypt-issuer
+  externalDNS:
+    enable: true
+  upstreams:
+  - name: demo-app
+    service: demo-svc
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: demo-app
