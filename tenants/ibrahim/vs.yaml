@@ -1,11 +1,11 @@
 apiVersion: k8s.nginx.org/v1
 kind: VirtualServer
 metadata:
-  name: ibrahim-vs
+  name: ib-vs
 spec:
-  host: ibrahim.f5demo.io
+  host: ib.f5demo.io
   tls:
-    secret: ibrahim-secret
+    secret: ib-secret
     cert-manager:
       cluster-issuer: letsencrypt-issuer
   externalDNS:
