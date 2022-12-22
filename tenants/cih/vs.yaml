@@ -1,0 +1,22 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: cih-vs
+spec:
+  host: cih.f5demo.io
+  tls:
+    secret: cih-secret
+    cert-manager:
+      cluster-issuer: letsencrypt-issuer
+  policies:
+  - name: example-vs-policy
+  externalDNS:
+    enable: true
+  upstreams:
+  - name: demo-app
+    service: demo-svc
+    port: 80
+  routes:
+  - path: /
+    action:
+      pass: demo-app
